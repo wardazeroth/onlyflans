@@ -1,0 +1,29 @@
+{%extends 'base.html' %}
+
+{%block content%}
+
+{%if cliente%}
+<div class="container">
+    <h1 class="text-center" style= "margin-top: 4rem;">Bienvenido {{cliente}}</h1>
+    {%else%}
+    <h1 class="text-center" style= "margin-top: 4rem;">Bienvenido Cliente</h1>
+    {%endif%}
+    <form style="margin-top: 4rem; margin-bottom: 4rem;">
+        <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Nombre</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        
+        </div>
+        <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Dirección Email</label>
+        <input type="password" class="form-control" id="exampleInputPassword1">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Comentarios</label>
+            <input type="password" class="form-control" id="exampleInputPassword1">
+        </div>
+        <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>
+</div>
+</div>
+{%endblock%}

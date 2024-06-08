@@ -2,6 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from main.pasteles import flanes
 from main.forms import OnlyflanForm
+from main.models import Persona
 
 # Create your views here.
 
@@ -24,6 +25,15 @@ def bienvenido(req):
         # validamos el formulario
         form = OnlyflanForm(req.POST)
         if form.is_valid():
+            #esta es la forma de pedirle a un modelo que cree un registro usando los datos de un formulario
+            Persona.objects.create(
+                **form.cleaned_data
+            )
+            # Persona.objects.create({
+            #     'nombre': form.nombre,
+            #     'email': form.email,
+            #     'mensaje': form.mensaje               
+            # })
             return redirect('/yeah')
         context = {'form': form}
         return render(req, 'welcome.html', context)

@@ -6,5 +6,4 @@ urlpatterns = [
     path('acerca', acerca, name='acerca'),
     path('bienvenido', bienvenido, name='bienvenido'),
     path('yeah', exito)
-
 ]

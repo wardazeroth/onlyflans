@@ -2,31 +2,33 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from main.pasteles import flanes
 from main.forms import OnlyflanForm
-from main.models import Persona
+from main.models import Contacto, Flan
 
 # Create your views here.
 
 def indice(req):
+    #Debe mostrar todos los flanes
+    flanes_publicos = Flan.objects.filter(is_private=False)
     context = {
-    'flan': flanes
+    'flan': flanes_publicos
     }
     return render(req, 'index.html', context)
 
 def acerca(req):
     return render(req, 'about.html')
 
-def bienvenido(req):  
+def contacto(req):  
     if req.method == 'GET':
         form = OnlyflanForm()
         context = {'form': form}
-        return render(req, 'welcome.html', context)
+        return render(req, 'contact.html', context)
         # renderizamos la página
     else:
         # validamos el formulario
         form = OnlyflanForm(req.POST)
         if form.is_valid():
             #esta es la forma de pedirle a un modelo que cree un registro usando los datos de un formulario
-            Persona.objects.create(
+            Contacto.objects.create(
                 **form.cleaned_data
             )
             # Persona.objects.create({
@@ -36,8 +38,15 @@ def bienvenido(req):
             # })
             return redirect('/yeah')
         context = {'form': form}
-        return render(req, 'welcome.html', context)
-    
+        return render(req, 'contact.html', context)
+
+def bienvenido(req):
+    #debe mostrar solo los flanes privados de la base de datos
+    flanes_privados = Flan.objects.filter(is_private=True)
+    context = {
+    'flan' : flanes_privados
+    }
+    return render (req, 'welcome.html', context)
 
 def exito(req):
     return render(req, 'yeah.html')

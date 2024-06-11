@@ -1,42 +1,29 @@
 {%extends 'base.html' %}
 
 {%block content%}
+{% if user.is_authenticated %}
+ <p class="text-center" style="font-size: 2rem; margin-top: 4rem;">Bienvenido, {{ user.username }}.</p>
+{% else %}
+ <p class="text-center" style="font-size: 2rem; margin-top: 4rem;">Bienvenido Cliente</p>
+{% endif %}
 
-{%if cliente%}
+
 <div class="container">
-    <h1 class="text-center" style= "margin-top: 4rem;">Bienvenido {{cliente}}</h1>
-    {%else%}
-    <h1 class="text-center" style= "margin-top: 4rem;">Bienvenido Cliente</h1>
-    {%endif%}
-
-    {%for mensaje in mensaje_error%}
-    <h3>
-        <div class="alert alert-danger text-center" role="alert" style="margin-top: 4rem; font-size: 2rem;">
-            {{mensaje}}
-        </div>
-    </h3>
-    {%endfor%}
-
-
-    <form id="form_flanes" action="/bienvenido" method="post" style="margin-top: 4rem; margin-bottom: 4rem;">
-        {% csrf_token %}
-
-        {{form}}
-        <!-- <div class="mb-3">
+    <div class="row">
+            {%for prod in flan%}
+                <div class="col-md-3 mb-4">    
+                    <div class="card text-bg-info p-3" style="width: 100%; margin-top: 5rem;">
+                    <img src="{{prod.foto}}" class="card-img-top" alt="...">
+                    <ul class="list-group list-group-flush ">
+                        <li class="list-group-item">{{prod.nombre}}</li>
+                        <li class="list-group-item">${{prod.precio}}</li>
+                    </ul>
+                </div>
+            </div>
+            {% endfor %} 
+        </div>    
+    </div>
+</div>
         
-        <label for="formGroupExampleInput" class="form-label">Nombre</label>
-        <input type="text" class="form-control" id="nombre" name="customer_name" placeholder="">
-        </div>
-        <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Email</label>
-        <input type="text" class="form-control" id="email" name="customer_email" aria-describedby="emailHelp">
-        </div>
-        <div class="mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label">Mensaje</label>
-            <textarea class="form-control" id="mensaje" name="message" rows="3"></textarea>
-        </div> -->
-        <button type="submit" class="btn btn-primary" style = 'margin-top: 2rem;'>Enviar</button>
-    </form>
-</div>
-</div>
+
 {%endblock%}

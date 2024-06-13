@@ -3,6 +3,8 @@ from django.shortcuts import render, redirect
 from main.pasteles import flanes
 from main.forms import OnlyflanForm
 from main.models import Contacto, Flan
+from django.contrib.auth.decorators import login_required
+
 
 # Create your views here.
 
@@ -40,6 +42,7 @@ def contacto(req):
         context = {'form': form}
         return render(req, 'contact.html', context)
 
+@login_required
 def bienvenido(req):
     #debe mostrar solo los flanes privados de la base de datos
     flanes_privados = Flan.objects.filter(is_private=True)
@@ -50,6 +53,12 @@ def bienvenido(req):
 
 def exito(req):
     return render(req, 'yeah.html')
+
+# def login(req):
+#     return render(req, 'login.html')
+
+def register(req):
+    return render(req, 'register.html')
     
     # cont = {
     #         'cliente': 'Elmo Lesto'

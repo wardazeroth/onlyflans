@@ -1,0 +1,32 @@
+{%extends 'base.html' %}
+
+{%block content%}
+<div>
+    <h1 class="text-center" style="margin-top: 4rem;">Regístrese</h1>
+</div>
+
+<div class="row">
+    <div class="col-2"></div>
+</div>
+
+<div class="row" style="margin-top: 2rem;">
+    <div class="col-6 d-inline-block mx-auto">
+        <form action="" method="post">
+            <div class="mb-3">
+                <label for="formGroupExampleInput" class="form-label">Username</label>
+                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Nombre">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label text-center">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label text-center">Password 2</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password 2">
+            </div>
+            <button type="submit" class="btn btn-primary" style = 'margin-top: 2rem;'>Registrarse</button>
+        </form>
+    </div>
+</div>
+</div>
+{%endblock%}

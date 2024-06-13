@@ -2,12 +2,12 @@
 
 {%block content%}
 
-{%if cliente%}
-<div class="container">
-    <h1 class="text-center" style= "margin-top: 4rem;">Bienvenido {{cliente}}</h1>
-    {%else%}
-    <h1 class="text-center" style= "margin-top: 4rem;">Bienvenido Cliente</h1>
-    {%endif%}
+{% if user.is_authenticated %}
+ <p class="text-center" style="font-size: 2rem; margin-top: 4rem;">Bienvenido, {{ user.username }}.</p>
+{% else %}
+ <p class="text-center" style="font-size: 2rem; margin-top: 4rem;">Bienvenido Cliente</p>
+{% endif %}
+
 
     {%for mensaje in mensaje_error%}
     <h3>

@@ -13,17 +13,26 @@
           <li class="nav-item">
             <a class="nav-link" href="/acerca">Acerca</a>
           </li>
+          {% if user.is_authenticated %}
           <li class="nav-item">
             <a class="nav-link" href="/bienvenido">Bienvenido</a>
           </li>
+          {%endif%}
           <li class="nav-item">
             <a class="nav-link" href="/contact">Contacto</a>
           </li>
         </ul>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Buscar</button>
-        </form>
+        <div class="d-flex" role="search">
+          {% if user.is_authenticated %}
+          <span class="d-inline-block m-3 text-light" style="font-size: 1.2rem;">Hola {{user.username}}</span>
+          <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">LOGOUT</button>
+          </form>           
+          {%else%}
+          <a href="{% url 'login' %}" class="btn btn-primary" style="margin-right: 1rem; margin-top: 0.5rem; margin-bottom: 0.5rem;">LOGIN</a>
+          {%endif%}
+        </div>
       </div>
     </div>
 </nav>

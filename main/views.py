@@ -4,9 +4,14 @@ from main.pasteles import flanes
 from main.forms import OnlyflanForm
 from main.models import Contacto, Flan
 from django.contrib.auth.decorators import login_required
+from django.contrib.messages.views import SuccessMessageMixin
+from django.contrib.auth.views import LoginView
 
 
 # Create your views here.
+
+class LoginViewPropia(SuccessMessageMixin, LoginView):
+    success_message = 'Has ingresado correctamente'
 
 def indice(req):
     #Debe mostrar todos los flanes

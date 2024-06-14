@@ -24,13 +24,27 @@
     <body>
     <div class="container">
         <header>
-            {%block header%}
-                {% include 'parts/header.html' %}   
-            {%endblock%}
+        {%block header%}
+            {% include 'parts/header.html' %}   
+        {%endblock%}
+
         </header>
         {%block navbar%}
             {% include 'parts/navbar.html' %}
         {%endblock%}
+
+        {%if messages%}
+        {%for message in messages%}
+        <div class="row">
+            <div class="col-6 d-inline-block mx-auto">
+                <div class="alert alert-{{message.tags}} alert-dismissible fade show"  style= 'margin-top: 2rem' role="alert">
+                    <strong>{{message}}</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            </div>
+        </div>       
+        {%endfor%}
+        {%endif%}
         <main>
             {%block content%}
             <p>Este es el bloque content del template base</p>
@@ -53,6 +67,13 @@
             integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
             crossorigin="anonymous"
         ></script>
-
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+        {%block js%}
+            <script>
+                setTimeout(function () {
+                    $('.fade').fadeOut(1000);
+                }, 3000);
+            </script>
+        {%endblock%}
     </body>
 </html>

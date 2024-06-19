@@ -1,5 +1,9 @@
 {%extends 'base.html' %}
 
+{%block css%}
+
+{%endblock%}
+
 {%block content%}
 
 {% if user.is_authenticated %}
@@ -20,8 +24,13 @@
 
     <form id="form_flanes" action="/contact" method="post" style="margin-top: 4rem; margin-bottom: 4rem;">
         {% csrf_token %}
+        <div class="row" style="margin-top: 2rem;">
+            <div class="col-9 d-inline-block mx-auto">
+                    {{form}}
+                <button type="submit" class="btn btn-primary" style = 'margin-top: 2rem;'>Enviar</button>
+            </div>
+        </div>
 
-        {{form}}
         <!-- <div class="mb-3">
         
         <label for="formGroupExampleInput" class="form-label">Nombre</label>
@@ -35,7 +44,7 @@
             <label for="exampleFormControlTextarea1" class="form-label">Mensaje</label>
             <textarea class="form-control" id="mensaje" name="message" rows="3"></textarea>
         </div> -->
-        <button type="submit" class="btn btn-primary" style = 'margin-top: 2rem;'>Enviar</button>
+        
     </form>
 </div>
 </div>

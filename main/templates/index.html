@@ -1,18 +1,39 @@
 {%extends 'base.html' %}
 
+{%block css%}
+<style>
+    /* The animation code */
+    @keyframes girar {
+    50% {
+        rotate: y 180deg}
+    100% {
+        rotate: y 360deg;
+        }
+    }
+    
+
+    .gira-sobre-eje:hover {
+        animation: girar;
+        animation-duration: 3s;
+        animation-iteration-count: infinite;
+    }
+</style>
+{%endblock%}
 {%block content%}
 
 <div class="container">
     <div class="row">
             {%for prod in flan%}
-                <div class="col-md-3 mb-4">    
-                    <div class="card text-bg-info p-3" style="width: 100%; margin-top: 5rem;">
-                    <img src="{{prod.foto}}" class="card-img-top" alt="...">
-                    <ul class="list-group list-group-flush ">
-                        <li class="list-group-item">{{prod.nombre}}</li>
-                        <li class="list-group-item">${{prod.precio}}</li>
-                    </ul>
-                </div>
+            <div class="col-md-3 mb-4">
+                <a href="{{prod.id}}" style="text-decoration: NONE;">
+                    <div class="card text-bg-info p-1 gira-sobre-eje" style="width: 100%; margin-top: 5rem;">
+                            <img src="{{prod.foto}}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{prod.nombre}}</h5>
+                            <p class="card-text">${{prod.precio}}</p>
+                        </div>
+                    </div>
+                </a>
             </div>
             {% endfor %} 
         </div>    
@@ -21,3 +42,5 @@
         
 
 {%endblock%}
+
+<!-- id="flanModal{{flan.id}} -->

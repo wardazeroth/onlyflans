@@ -8,3 +8,10 @@ class OnlyflanForm(forms.Form):
     widget = forms.EmailInput(attrs={'class':'form-control'}))
     mensaje = forms.CharField(widget = forms.Textarea(attrs={'class':'form-control'}))
     
+class RegisterForm(forms.Form):
+    username = forms.CharField()
+    email = forms.EmailField()
+    password = forms.CharField(widget = forms.PasswordInput())
+    passRepeat = forms.CharField(widget = forms.PasswordInput())
+    
+    

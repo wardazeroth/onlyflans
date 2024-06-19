@@ -14,6 +14,7 @@ class Flan(models.Model):
     uuid = models.UUIDField(editable=False, default=uuid.uuid4)
     nombre = models.CharField(max_length=64)
     descripcion = models.TextField()
+    ingredientes= models.TextField(default = False)
     precio = models.IntegerField(default=1000)
     foto = models.URLField()
     is_private = models.BooleanField(default = False)

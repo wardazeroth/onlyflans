@@ -1,0 +1,49 @@
+{%extends 'base.html' %}
+
+{%block css%}
+<style>
+    h1 {
+        margin-top: 2rem;
+        color: rgb(255, 255, 255);
+    }
+
+    h2{
+        margin-top: 5rem;
+        font-size: 1.5rem;
+        text-align:justify;
+    }
+</style>
+{%endblock%}
+{%block content%}
+  {%if flan != None %}
+    <h1 class="text-center">{{flan.nombre}}</h1>
+    <div class="container">
+      <div class="row">
+        <div class="col-6">             
+            <div class="card text-bg-info p-1" style="width: 28rem; margin-top: 5rem;">
+                <img src="{{flan.foto}}" class="card-img-top" alt="...">
+                <ul class="list-group list-group-flush ">
+                    <!-- <li class="list-group-item">
+                        <p>Vacunas:</p>
+                        {%for i in mascota.vacunas%}   
+                            <ol>{{i}}<ol> 
+                        {% endfor %}                    
+                    </li> -->
+                </ul>
+            </div>
+        </div>
+        <div class="col-6">
+            <h2>{{flan.descripcion}}</h2>
+            <h2>Ingredientes</h2>
+            <br>
+            <ul>
+                {%for ing in ingredientes%}
+                    <ul style="font-size: 1.2rem;">{{ing}}</ul>
+                {%endfor%}
+            </ul>
+        </div>
+    </div>
+    </div>
+</div>
+  {% endif %}
+{%endblock%}

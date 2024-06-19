@@ -1,6 +1,24 @@
+{%block css%}
+<style>
+    /* The animation code */
+    @keyframes girar {
+    50% {
+        rotate: y 180deg}
+    100% {
+        rotate: y 360deg;
+        }
+    }
+    
 
-<nav class="navbar navbar-expand-lg bg-dark" data-bs-theme= "dark">
-    <div class="container-fluid">
+    .log-sobre-eje {
+        animation: girar;
+        animation-duration: 3s;
+        animation-iteration-count: infinite;
+    }
+</style>
+{%endblock%}
+<nav class="navbar navbar-expand-lg bg-info" data-bs-theme= "dark">
+    <div class="container-fluid" style="background-color: rgb(20, 19, 19);">
       <a class="navbar-brand" href="/">OnlyFlans</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -24,13 +42,17 @@
         </ul>
         <div class="d-flex" role="search">
           {% if user.is_authenticated %}
-          <span class="d-inline-block m-3 text-light" style="font-size: 1.2rem;">Hola {{user.username}}</span>
+          <div class="cont">	
+            <button class="btn"><span class="d-inline-block m-3 text-light" style="font-size: 1.2rem; margin-bottom: 0rem;">Hola {{user.username}}</span><img src="https://i.cloudup.com/2ZAX3hVsBE-3000x3000.png" height="50" width="50"></button>                  
+          </div>
           <form action="{% url 'logout' %}" method="post">
             {% csrf_token %}
-            <button type="submit" class="btn btn-danger" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">LOGOUT</button>
-          </form>           
+
+            <button type="submit" class="btn btn-danger log-sobre-eje" style="margin-top: 1rem; margin-bottom: 0.5rem;">CERRAR SESIÓN</button>
+
+          </form>            
           {%else%}
-          <a href="{% url 'login' %}" class="btn btn-primary" style="margin-right: 1rem; margin-top: 0.5rem; margin-bottom: 0.5rem;">LOGIN</a>
+          <a href="{% url 'login' %}" class="btn btn-primary log-sobre-eje" style="margin-right: 1rem; margin-top: 0.5rem; margin-bottom: 0.5rem;">INICIAR SESIÓN</a>
           {%endif%}
         </div>
       </div>

@@ -22,7 +22,7 @@
     {%endfor%}
 
 
-    <form id="form_flanes" action="/contact" method="post" style="margin-top: 4rem; margin-bottom: 4rem;">
+    <form id="form_flanes" action="{% url 'contacto' %}" method="post" style="margin-top: 4rem; margin-bottom: 4rem;">
         {% csrf_token %}
         <div class="row" style="margin-top: 2rem;">
             <div class="col-9 d-inline-block mx-auto">

@@ -5,9 +5,9 @@ urlpatterns = [
     path('', indice, name='indice'),
     path('acerca', acerca, name='acerca'),
     path('bienvenido', bienvenido, name='bienvenido'),
-    path('contact', contacto, name = 'contacto'),
+    path('contact/', contacto, name = 'contacto'),
     path('yeah', exito),
-    path('<id>/', detalleFlan)
+    path('<int:id>/', detalleFlan)
     # path('login', login),
     # path('register', register)
 ]
